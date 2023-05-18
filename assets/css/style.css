@@ -1,0 +1,42 @@
+body
+{
+    background-color: #F0F5F9;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+.form-wrapper
+{
+    background-color: #fff;
+    box-shadow: 1px 0 20px rgba(0,0,0,.08);
+    padding: 20px;
+}
+:root {
+    --PrimaryGreen: green;
+    --PrimaryRed: red;
+}
+.pg-title
+{
+    color: var(--PrimaryGreen);
+}
+.logo img
+{
+    height: 50px;
+}
+.logo h5
+{
+    font-size: 12px;
+    font-weight: 400;
+}
+.form-control
+{
+    font-size: 14px;
+}
+
+.form-control:focus
+{
+    color: #4F5467;
+    background-color: #fff;
+    border-color: var(--green);
+    outline: 0;
+    box-shadow: none;
+}
