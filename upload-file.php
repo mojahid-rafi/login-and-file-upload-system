@@ -88,7 +88,7 @@ if(isset($_POST['submit']))
     }
     else
     {
-        $msg = "Invalid file type or size...!";
+        echo "Invalid file type or size...!";
     }
 
 }
