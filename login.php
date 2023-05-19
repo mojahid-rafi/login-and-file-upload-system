@@ -23,7 +23,7 @@
                     <div class="offset-2 col-md-8 my-2">
                         <div class="card">
                             <div class="card-body">
-                                <form action="" id="registrationForm" method="POST">
+                                <form action="" id="LoginForm" method="POST">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
@@ -84,7 +84,6 @@ while ($row = fgets($fh)) {
     echo($row."<br>");
 }
 fclose($fh);
-
 
 // Checking of User Name Length
 //        $userLength = strlen($user);
