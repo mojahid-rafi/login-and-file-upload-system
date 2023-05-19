@@ -66,7 +66,34 @@
                                 </form>
                             </div>
                         </div>
-                        <?php if (isset($msg)) {echo $msg;} ?>
+                        <?php
+
+                        if (isset($_POST['submit']))
+                        {
+                            $UserName = $_POST['user_name'];
+                            $email = $_POST['email'];
+                            $password = $_POST['User_Pwd'];
+                            $ConPassword = $_POST['Con_User_Pwd'];
+
+                            if ($password != $ConPassword)
+                            {
+                                echo "<p class='alert alert-danger mt-3'>Password Didn't Matched...!</p>";
+                                exit;
+
+                            }
+                            else
+                            {
+                                $fh = fopen("./db/users","a");
+                                $row = $UserName.",".$email.",".$password."\n";
+
+                                fwrite($fh,$row);
+                                fclose($fh);
+
+                                echo "<p class='alert alert-success mt-3'>Registration Successfull...!</p>";
+                            }
+                        }
+
+                        ?>
                     </div>
                 </div>
             </div>
@@ -74,36 +101,8 @@
     </div>
 </section>
 
-<?php
-
-if (isset($_POST['submit']))
-{
-    $UserName = $_POST['user_name'];
-    $email = $_POST['email'];
-    $password = $_POST['User_Pwd'];
-    $ConPassword = $_POST['Con_User_Pwd'];
-
-    if ($password != $ConPassword)
-    {
-        echo "<p class=\"alert alert-danger\">Password Didn't Matched...!</p>";
-        exit;
-
-    }
-    else
-    {
-        $fh = fopen("./db/users","a");
-        $row = $UserName.",".$email.",".$password.";\n";
-
-        fwrite($fh,$row);
-        fclose($fh);
-
-        echo "<p class=\"alert alert-success\">Registration Successfull...!</p>";
-    }
-}
-
-?>
-
 <script src="./assets/js/jquery-3.6.4.min.js"></script>
 <script src="./assets/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>

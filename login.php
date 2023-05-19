@@ -52,7 +52,35 @@
                                 </form>
                             </div>
                         </div>
-                        <?php if (isset($msg)) {echo $msg;} ?>
+
+                        <?php
+
+                            if (isset($_POST['submit']))
+                            {
+                                $email = $_POST['email'];
+                                $password = $_POST['User_Pwd'];
+
+                                $users = file("./db/users");
+
+                                $loggedin = false;
+                                foreach($users as $user) {
+                                    list($name, $db_email, $db_password) = explode(",", $user);
+                                    if ($email == $db_email && $password == $db_password) {
+                                        $loggedin = true;
+                                        break;
+                                    }
+                                }
+                                if($loggedin){
+                                    header("location:upload-file.php");
+                                }
+                                else{
+
+                                    echo "<p class='alert alert-danger mt-3'>Invalid Email or Password...!</p>";
+                                }
+                            }
+
+                        ?>
+
                     </div>
                 </div>
             </div>
@@ -60,42 +88,8 @@
     </div>
 </section>
 
-<?php
-
-if (isset($_POST['submit']))
-{
-    $email = $_POST['email'];
-    $password = $_POST['User_Pwd'];
-
-    $valid = false;
-    $fh = fopen('./db/users','r');
-    while ($line = fgets($fh)) {
-        if ($line[1] = $email && $line[2] = $password)
-        {
-            header("Location: ./upload-file.php");
-        }
-    }
-    fclose($fh);
-
-}
-
-$fh = fopen('./db/users','r');
-while ($row = fgets($fh)) {
-    echo($row."<br>");
-}
-fclose($fh);
-
-// Checking of User Name Length
-//        $userLength = strlen($user);
-//        if ($userLength < 4 || $userLength > 8) {
-//            echo "<h3 class='text-danger'>Username must be between 4 to 8 characters</h3>";
-//        } else {
-//            echo "<h3>Valid Username</h3>";
-//        }
-
-?>
-
 <script src="./assets/js/jquery-3.6.4.min.js"></script>
 <script src="./assets/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>

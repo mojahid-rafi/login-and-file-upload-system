@@ -43,7 +43,45 @@
                                 </form>
                             </div>
                         </div>
-                        <?php if (isset($msg)) {echo $msg;} ?>
+                        <?php
+
+                        if(isset($_POST['submit']))
+                        {
+                            $file = $_FILES['file'];
+
+                            //for test (It will show file info"
+                            //    foreach ($file as $key => $value) {
+                            //        echo "$key: $value<br>";
+                            //    }
+
+                            $FileType = array("image/jpeg", "image/gif", "image/png",'image/webp', 'application/pdf');
+
+                            if(in_array($file['type'],$FileType) && $file['size'] < 5242880)
+                            {
+                                //echo "Accepted..!";
+                                if(in_array($file['type'],$FileType))
+                                {
+                                    if ($file['type'] == 'application/pdf')
+                                    {
+                                        $fileName = rand(10000,99999)."-".time().".pdf";
+                                        move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
+                                    }
+                                    else
+                                    {
+                                        $fileName = rand(10000,99999)."-".time().".jpg";
+                                        move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
+                                    }
+
+                                    echo "<p class='alert alert-success mt-3'>Upload Successful...!</p>";
+                                }
+                            }
+                            else
+                            {
+                                echo "<p class='alert alert-danger mt-3'>Invalid file type or size...!</p>";
+                            }
+
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -52,47 +90,6 @@
 </section>
 
 <hr>
-
-<?php
-
-
-if(isset($_POST['submit']))
-{
-    $file = $_FILES['file'];
-
-//for test (It will show file info"
-//    foreach ($file as $key => $value) {
-//        echo "$key: $value<br>";
-//    }
-
-    $FileType = array("image/jpeg", "image/gif", "image/png",'image/webp', 'application/pdf');
-
-    if(in_array($file['type'],$FileType) && $file['size'] < 5242880)
-    {
-        //echo "Accepted..!";
-        if(in_array($file['type'],$FileType))
-        {
-            if ($file['type'] == 'application/pdf')
-            {
-                $fileName = rand(10000,99999)."-".time().".pdf";
-                move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
-            }
-            else
-            {
-                $fileName = rand(10000,99999)."-".time().".jpg";
-                move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
-            }
-
-            echo "Upload Successful...!";
-        }
-    }
-    else
-    {
-        echo "Invalid file type or size...!";
-    }
-
-}
-?>
 
 
 <script src="./assets/js/jquery-3.6.4.min.js"></script>
