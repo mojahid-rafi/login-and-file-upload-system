@@ -27,7 +27,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <input name="email" type="email" class="form-control" placeholder="Enter Your Email" required="" aria-invalid="false">
+                                                <input name="email" type="email" class="form-control" placeholder="Enter Email" required="" aria-invalid="false">
                                                 <span id="email-error" class="text-danger error-msg"></span>
                                             </div>
                                         </div>
