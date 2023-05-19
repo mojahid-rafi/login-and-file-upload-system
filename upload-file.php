@@ -72,7 +72,7 @@ if(isset($_POST['submit']))
         //echo "Accepted..!";
         if(in_array($file['type'],$FileType))
         {
-            if ($file['type'] = 'application/pdf')
+            if ($file['type'] == 'application/pdf')
             {
                 $fileName = rand(10000,99999)."-".time().".pdf";
                 move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
