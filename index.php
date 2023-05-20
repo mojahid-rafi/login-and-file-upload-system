@@ -36,15 +36,28 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-12 mx-auto">
-                <div class="row">
-                    <div class="offset-2 col-md-8">
-                        <h5 class="pg-title text-center mt-3"><span><img src="./assets/logo.png" width="32px" alt=""></span> Submit Your Files (Images/PDF)</h5>
-                    </div>
-                </div>
+<!--                <div class="row">-->
+<!--                    <div class="offset-2 col-md-8">-->
+<!--                        <h5 class="pg-title text-center mt-3">-->
+<!--                            <span><img src="./assets/logo.png" width="32px" alt=""></span> Submit Your Files (Images/PDF)-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="row">
                     <div class="offset-2 col-md-8 my-2">
                         <div class="card">
+                            <div class="card-header" style="padding: 0.40rem 1.25rem;">
+                                <h6 class="pg-title d-inline-block" style="margin-top: 3px;">
+                                    <span>Submit Your Files (Images/PDF)
+                                </h6>
+                                <a href="./logout.php" class="btn btn-sm btn-dark float-right">Logout</a>
+                            </div>
                             <div class="card-body">
+<!--                                <div class="row">-->
+<!--                                    <div class="col-12">-->
+<!--                                        <a href="./logout.php" class="btn btn-sm btn-dark float-right">Logout</a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <form action="" id="FileUpload" method="POST" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -109,9 +122,14 @@
 
                             }
                             $delMsg = "<p class='alert alert-danger mt-3'>Deleted Successfully...!</p>";
-                            if (isset($_GET['msg']) == "deleted")
+                            $failedMsg = "<p class='alert alert-danger mt-3'>Unable to Delete...!</p>";
+                            if (isset($_GET['msg']) &&  $_GET['msg'] == "deleted")
                             {
                                 echo $delMsg;
+                            }
+                            if (isset($_GET['msg']) &&  $_GET['msg'] == "failed")
+                            {
+                                echo $failedMsg;
                             }
                         ?>
                     </div>
