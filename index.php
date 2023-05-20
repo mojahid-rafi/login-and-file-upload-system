@@ -24,8 +24,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>File Upload</title>
+    <title>Submit Your Files</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="icon" type="image/png" href="./assets/icon.png">
 </head>
 <body>
 
@@ -35,7 +38,7 @@
             <div class="col-md-9 col-sm-12 mx-auto">
                 <div class="row">
                     <div class="offset-2 col-md-8">
-                        <h5 class="pg-title text-center mt-3">Submit Your Files (Images/PDF)</h5>
+                        <h5 class="pg-title text-center mt-3"><span><img src="./assets/logo.png" width="32px" alt=""></span> Submit Your Files (Images/PDF)</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -55,11 +58,16 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group float-right">
-                                                <input type="submit" value="Upload" name="submit" class="form-control btn btn-success mt-3">
+                                                <input type="submit" value="Upload" name="submit" class="form-control btn btn-success mt-2">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <span>Want to add your friends? <a href="./register.php">Sign Up</a></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <?php

@@ -8,6 +8,8 @@
     <title>User Registration</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="icon" type="image/png" href="./assets/icon.png">
 </head>
 <body>
 
@@ -59,7 +61,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group float-right">
-                                                <input type="submit" value="Register" name="submit" class="form-control btn btn-success mt-3">
+                                                <input type="submit" value="Register" name="submit" class="form-control btn btn-success mt-2">
                                             </div>
                                         </div>
                                     </div>

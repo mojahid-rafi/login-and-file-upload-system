@@ -17,6 +17,8 @@ if(isset($_SESSION['auth']) && $_SESSION['auth']){
     <title>User Login</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="icon" type="image/png" href="./assets/logo.png">
 </head>
 <body>
 
@@ -61,7 +63,7 @@ if(isset($_SESSION['auth']) && $_SESSION['auth']){
                                     </div>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <span>Don't Have Account? <a href="./register.php">Singup</a></span>
+                                            <span>Don't Have Account? <a href="./register.php">Sign Up</a></span>
                                         </div>
                                     </div>
                                 </form>
