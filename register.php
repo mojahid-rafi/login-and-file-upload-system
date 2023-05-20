@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Registration</title>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
 
@@ -25,13 +26,15 @@
                             <div class="card-body">
                                 <form action="" id="registrationForm" method="POST">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <input name="user_name" type="text" class="form-control" placeholder="Enter Your Name" required="">
                                                 <span id="user_name-error" class="text-danger error-msg"></span>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <input name="email" type="email" class="form-control" placeholder="Enter Your Email" required="" aria-invalid="false">
                                                 <span id="email-error" class="text-danger error-msg"></span>
@@ -39,16 +42,13 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <input name="User_Pwd" type="password" class="form-control" placeholder="Enter Your Password" required="">
                                                 <span id="User_Pwd-error" class="text-danger error-msg"></span>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <input name="Con_User_Pwd" type="password" class="form-control" placeholder="Retype Password" required="">
                                                 <span id="Con_User_Pwd-error" class="text-danger error-msg"></span>
@@ -64,6 +64,11 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <span>Already Have an Account? <a href="./login.php">Login</a></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <?php

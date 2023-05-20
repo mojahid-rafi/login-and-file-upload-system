@@ -10,6 +10,16 @@
 </head>
 <body>
 
+<p>
+    <?php
+        $delMsg = "<p class='alert alert-success'>Deleted Successfully.</p>";
+        if (isset($_GET['msg']) == "deleted")
+        {
+            echo $delMsg;
+        }
+    ?>
+</p>
+
 <section>
     <div class="container">
         <div class="row">
@@ -112,7 +122,7 @@
                         echo '
                                 <div class="col-2"><div class="border rounded p-1">
                                 <img src="'. $dir. '/'. $file. '" alt="'. $file. '" width="100%" class="img-fluid img-thumbnail" >
-                                <button onclick=\'del(\"{$file}\")\' class="btn btn-sm btn-outline-danger btn-block mt-2">Delete</button>
+                                <button onclick=\'del("'.$file.'")\' class="btn btn-sm btn-outline-danger btn-block mt-2">Delete</button>
                                 </div></div>
                                 ';
                     }
@@ -127,9 +137,18 @@
 
 
 <script>
-    function del($n)
+    function del($fileName)
     {
-        alert($n);
+        $Confirmation = confirm("Are you sure you want to delete?");
+        if(!$Confirmation)
+        {
+            return;
+        }
+        else
+        {
+            window.location = "delete.php?file=" + $fileName;
+        }
+
     }
 </script>
 

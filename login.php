@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Login</title>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
 
@@ -20,7 +21,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-md-8 my-2">
+                    <div class="offset-3 col-md-6 my-2">
                         <div class="card">
                             <div class="card-body">
                                 <form action="" id="LoginForm" method="POST">
@@ -45,8 +46,13 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group float-right">
-                                                <input type="submit" value="Login" name="submit" class="form-control btn btn-success mt-3">
+                                                <input type="submit" value="Login" name="submit" class="form-control btn btn-success mt-2">
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <span>Don't Have Account? <a href="./register.php">Singup</a></span>
                                         </div>
                                     </div>
                                 </form>
@@ -63,6 +69,7 @@
                                 $users = file("./db/users");
 
                                 $loggedin = false;
+                                $name = "";
                                 foreach($users as $user) {
                                     list($name, $db_email, $db_password) = explode(",", $user);
                                     if ($email == $db_email && $password == $db_password) {
@@ -71,6 +78,7 @@
                                     }
                                 }
                                 if($loggedin){
+                                    $_session['auth'] = true;
                                     header("location:upload-file.php");
                                 }
                                 else{

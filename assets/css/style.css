@@ -10,6 +10,14 @@ body
     box-shadow: 1px 0 20px rgba(0,0,0,.08);
     padding: 20px;
 }
+a{
+    color: #28a745;
+}
+a:hover
+{
+    text-decoration: none;
+    color: #28a745;
+}
 :root {
     --PrimaryGreen: green;
     --PrimaryRed: red;
