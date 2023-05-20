@@ -89,7 +89,7 @@
                             else
                             {
                                 $fh = fopen("./db/users","a");
-                                $row = $UserName.",".$email.",".$password."\n";
+                                $row = $UserName.",".$email.",".$password.",\n";
 
                                 fwrite($fh,$row);
                                 fclose($fh);

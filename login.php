@@ -1,3 +1,12 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(isset($_SESSION['auth']) && $_SESSION['auth']){
+    header("location:index.php");
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -68,23 +77,17 @@
 
                                 $users = file("./db/users");
 
-                                $loggedin = false;
+                                $auth = false;
                                 $name = "";
                                 foreach($users as $user) {
                                     list($name, $db_email, $db_password) = explode(",", $user);
                                     if ($email == $db_email && $password == $db_password) {
-                                        $loggedin = true;
+                                        $_SESSION['auth'] = true;
+                                        header("location:index.php");
                                         break;
                                     }
                                 }
-                                if($loggedin){
-                                    $_session['auth'] = true;
-                                    header("location:index.php");
-                                }
-                                else{
-
-                                    echo "<p class='alert alert-danger mt-3'>Invalid Email or Password...!</p>";
-                                }
+                                echo "<p class='alert alert-danger mt-3'>Invalid Email or Password...!</p>";
                             }
 
                         ?>
