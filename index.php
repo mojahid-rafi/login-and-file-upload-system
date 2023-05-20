@@ -10,16 +10,6 @@
 </head>
 <body>
 
-<p>
-    <?php
-        $delMsg = "<p class='alert alert-success'>Deleted Successfully.</p>";
-        if (isset($_GET['msg']) == "deleted")
-        {
-            echo $delMsg;
-        }
-    ?>
-</p>
-
 <section>
     <div class="container">
         <div class="row">
@@ -55,42 +45,47 @@
                         </div>
                         <?php
 
-                        if(isset($_POST['submit']))
-                        {
-                            $file = $_FILES['file'];
-
-                            //for test (It will show file info"
-                            //    foreach ($file as $key => $value) {
-                            //        echo "$key: $value<br>";
-                            //    }
-
-                            $FileType = array("image/jpeg", "image/gif", "image/png","image/webp", "application/pdf");
-
-                            if(in_array($file['type'],$FileType) && $file['size'] < 5242880)
+                            if(isset($_POST['submit']))
                             {
-                                //echo "Accepted..!";
-                                if(in_array($file['type'],$FileType))
+                                $file = $_FILES['file'];
+
+                                //for test (It will show file info"
+                                //    foreach ($file as $key => $value) {
+                                //        echo "$key: $value<br>";
+                                //    }
+
+                                $FileType = array("image/jpeg", "image/gif", "image/png","image/webp", "application/pdf");
+
+                                if(in_array($file['type'],$FileType) && $file['size'] < 5242880)
                                 {
-                                    if ($file['type'] == 'application/pdf')
+                                    //echo "Accepted..!";
+                                    if(in_array($file['type'],$FileType))
                                     {
-                                        $fileName = rand(10000,99999)."-".time().".pdf";
-                                        move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
-                                    }
-                                    else
-                                    {
-                                        $fileName = rand(10000,99999)."-".time().".jpg";
-                                        move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
-                                    }
+                                        if ($file['type'] == 'application/pdf')
+                                        {
+                                            $fileName = rand(10000,99999)."-".time().".pdf";
+                                            move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
+                                        }
+                                        else
+                                        {
+                                            $fileName = rand(10000,99999)."-".time().".jpg";
+                                            move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
+                                        }
 
-                                    echo "<p class='alert alert-success mt-3'>Upload Successful...!</p>";
+                                        echo "<p class='alert alert-success mt-3'>Upload Successful...!</p>";
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                echo "<p class='alert alert-danger mt-3'>Invalid file type or size...!</p>";
-                            }
+                                else
+                                {
+                                    echo "<p class='alert alert-danger mt-3'>Invalid file type or size...!</p>";
+                                }
 
-                        }
+                            }
+                            $delMsg = "<p class='alert alert-danger mt-3'>Deleted Successfully...!</p>";
+                            if (isset($_GET['msg']) == "deleted")
+                            {
+                                echo $delMsg;
+                            }
                         ?>
                     </div>
                 </div>
@@ -101,7 +96,7 @@
 
 <hr>
 
-
+<!--Show All Image Files-->
 <section>
     <div class="container-fluid">
         <div class="row">
@@ -137,10 +132,11 @@
 
 
 <script>
+    //Delete Function For Delete Item
     function del($fileName)
     {
-        $Confirmation = confirm("Are you sure you want to delete?");
-        if(!$Confirmation)
+        var Confirmation = confirm("Are you sure you want to delete?");
+        if(!Confirmation)
         {
             return;
         }

@@ -79,7 +79,7 @@
                                 }
                                 if($loggedin){
                                     $_session['auth'] = true;
-                                    header("location:upload-file.php");
+                                    header("location:index.php");
                                 }
                                 else{
 

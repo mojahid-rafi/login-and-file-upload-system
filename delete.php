@@ -5,10 +5,10 @@ if (isset($_GET['file'])) {
 
     if (file_exists($FilePath)) {
         if (unlink($FilePath)) {
-            header("location: upload-file.php?msg=deleted");
+            header("location: index.php?msg=deleted");
         } else {
             $msg = "<p class='alert alert-danger'>Unable to Delete...!</p>";
-            header("location: upload-file.php?msg=".$msg);
+            header("location: index.php?msg=".$msg);
         }
     }
 }
