@@ -65,7 +65,7 @@
                                 </form>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <span>Want to add your friends? <a href="./register.php">Sign Up</a></span>
+                                        <span>Want to add your friends? <a href="./register.php">Register</a></span>
                                     </div>
                                 </div>
                             </div>
