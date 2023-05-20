@@ -54,7 +54,7 @@
                             //        echo "$key: $value<br>";
                             //    }
 
-                            $FileType = array("image/jpeg", "image/gif", "image/png",'image/webp', 'application/pdf');
+                            $FileType = array("image/jpeg", "image/gif", "image/png","image/webp", "application/pdf");
 
                             if(in_array($file['type'],$FileType) && $file['size'] < 5242880)
                             {
@@ -91,6 +91,47 @@
 
 <hr>
 
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <?php
+
+            $dir = './_uploads/';
+
+            $FType = array("jpg", "jpeg", "gif", "png", "webp");
+
+            if (file_exists($dir) == false) {
+                echo 'Directory \''. $dir. '\' not found!';
+            } else {
+
+                $files = scandir($dir);
+                foreach ($files as $file) {
+                    $extension = pathinfo($file, PATHINFO_EXTENSION);
+                    if (in_array($extension, $FType)) {
+                        echo '
+                                <div class="col-2"><div class="border rounded p-1">
+                                <img src="'. $dir. '/'. $file. '" alt="'. $file. '" width="100%" class="img-fluid img-thumbnail" >
+                                <button onclick=\'del(\"{$file}\")\' class="btn btn-sm btn-outline-danger btn-block mt-2">Delete</button>
+                                </div></div>
+                                ';
+                    }
+                }
+            }
+
+            ?>
+
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function del($n)
+    {
+        alert($n);
+    }
+</script>
 
 <script src="./assets/js/jquery-3.6.4.min.js"></script>
 <script src="./assets/js/bootstrap.bundle.js"></script>
