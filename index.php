@@ -36,13 +36,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-12 mx-auto">
-<!--                <div class="row">-->
-<!--                    <div class="offset-2 col-md-8">-->
-<!--                        <h5 class="pg-title text-center mt-3">-->
-<!--                            <span><img src="./assets/logo.png" width="32px" alt=""></span> Submit Your Files (Images/PDF)-->
-<!--                        </h5>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="row">
+                    <div class="offset-2 col-md-8">
+                        <h5 class="text-dark text-center mt-3">
+                            Welcome,
+                            <span class="pg-title">
+                                <?php
+                                if (isset($_SESSION['UserName']))
+                                {
+                                    echo $_SESSION['UserName'];
+                                }
+                                ?>
+                            </span>
+                        </h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="offset-2 col-md-8 my-2">
                         <div class="card">

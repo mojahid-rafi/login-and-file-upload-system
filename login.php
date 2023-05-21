@@ -85,6 +85,7 @@ if(isset($_SESSION['auth']) && $_SESSION['auth']){
                                     list($name, $db_email, $db_password) = explode(",", $user);
                                     if ($email == $db_email && $password == $db_password) {
                                         $_SESSION['auth'] = true;
+                                        $_SESSION['UserName'] = $name;
                                         header("location:index.php");
                                         break;
                                     }
