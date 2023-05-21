@@ -121,15 +121,19 @@
                                 }
 
                             }
+
                             $delMsg = "<p class='alert alert-danger mt-3'>Deleted Successfully...!</p>";
                             $failedMsg = "<p class='alert alert-danger mt-3'>Unable to Delete...!</p>";
-                            if (isset($_GET['msg']) &&  $_GET['msg'] == "deleted")
+                            if  (isset($_SESSION['del']) && $_SESSION['del']=true)
                             {
                                 echo $delMsg;
+                                unset($_SESSION['del']);
+
                             }
-                            if (isset($_GET['msg']) &&  $_GET['msg'] == "failed")
+                            elseif (isset($_SESSION['failed']) && $_SESSION['failed']=true)
                             {
                                 echo $failedMsg;
+                                unset($_SESSION['failed']);
                             }
                         ?>
                     </div>

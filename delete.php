@@ -1,21 +1,43 @@
 <?php
+//Session Work
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if(!isset($_SESSION['auth']))
+{
+    header("location:login.php");
+}
+
+if(isset($_SESSION['auth']) && $_SESSION['auth']){
+
+}
+else
+{
+    header("location:login.php");
+}
+//End Session Work
+
 if (isset($_GET['file'])) {
     $fileName = $_GET['file'];
     $FilePath = "./_uploads/" . $fileName;
 
     if (file_exists($FilePath)) {
         if (unlink($FilePath)){
-            header("location: index.php?msg=deleted");
+            $_SESSION['del'] = true;
+            header("location: index.php");
             exit;
         }
         else
         {
-            header("location: index.php?msg=failed");
+            $_SESSION['failed'] = true;
+            header("location: index.php");
         }
     }
     else
     {
-        header("location: index.php?msg=failed");
+        $_SESSION['failed'] = true;
+        header("location: index.php");
     }
 
 }
