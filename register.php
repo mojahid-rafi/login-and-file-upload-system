@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User Registration</title>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
-    <link rel="icon" type="image/png" href="./assets/icon.png">
-</head>
-<body>
+<?php include './header.php'; ?>
 
 <section>
     <div class="container">
@@ -84,9 +71,8 @@
 
                             if ($password != $ConPassword)
                             {
-                                echo "<p class='alert alert-danger mt-3'>Password Didn't Matched...!</p>";
-                                exit;
-
+                                $_SESSION['msgType'] = "warning";
+                                $_SESSION['msg'] = "Password Didn't Matched...!";
                             }
                             else
                             {
@@ -96,7 +82,8 @@
                                 fwrite($fh,$row);
                                 fclose($fh);
 
-                                echo "<p class='alert alert-success mt-3'>Registration Successfull...!</p>";
+                                $_SESSION['msgType'] = "success";
+                                $_SESSION['msg'] = "Registration Successfull...!";
                             }
                         }
 
@@ -108,8 +95,4 @@
     </div>
 </section>
 
-<script src="./assets/js/jquery-3.6.4.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.js"></script>
-
-</body>
-</html>
+<?php include './footer.php'; ?>

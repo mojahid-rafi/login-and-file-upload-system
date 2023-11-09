@@ -1,36 +1,23 @@
+<?php include './header.php'; ?>
+
 <?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-    if(!isset($_SESSION['auth']))
-    {
-        header("location:login.php");
-    }
+if(!isset($_SESSION['auth']))
+{
+    header("location:login.php");
+}
 
-    if(isset($_SESSION['auth']) && $_SESSION['auth']){
+if(isset($_SESSION['auth']) && $_SESSION['auth']){
 
-    }
-    else
-    {
-        header("location:login.php");
-    }
+}
+else
+{
+    header("location:login.php");
+}
 ?>
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Submit Your Files</title>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
-    <link rel="icon" type="image/png" href="./assets/icon.png">
-</head>
-<body>
 
 <section>
     <div class="container">
@@ -55,7 +42,7 @@
                     <div class="offset-2 col-md-8 my-2">
                         <div class="card">
                             <div class="card-header" style="padding: 0.40rem 1.25rem;">
-                                <h6 class="pg-title d-inline-block" style="margin-top: 3px;">
+                                <h6 class="d-inline-block" style="margin-top: 3px;">
                                     <span>Submit Your Files (Images/PDF)
                                 </h6>
                                 <a href="./logout.php" class="btn btn-sm btn-dark float-right">Logout</a>
@@ -120,27 +107,30 @@
                                             move_uploaded_file($file['tmp_name'],"_uploads/".$fileName);
                                         }
 
-                                        echo "<p class='alert alert-success mt-3'>Upload Successful...!</p>";
+                                        $_SESSION['msgType'] = "success";
+                                        $_SESSION['msg'] = "Upload Successful...!";
                                     }
                                 }
                                 else
                                 {
-                                    echo "<p class='alert alert-danger mt-3'>Invalid file type or size...!</p>";
+                                    $_SESSION['msgType'] = "error";
+                                    $_SESSION['msg'] = "Invalid file type or size...!";
+
                                 }
 
                             }
 
-                            $delMsg = "<p class='alert alert-danger mt-3'>Deleted Successfully...!</p>";
-                            $failedMsg = "<p class='alert alert-danger mt-3'>Unable to Delete...!</p>";
                             if  (isset($_SESSION['del']) && $_SESSION['del']=true)
                             {
-                                echo $delMsg;
+                                $_SESSION['msgType'] = "delete";
+                                $_SESSION['msg'] = "Deleted Successfully...!";
                                 unset($_SESSION['del']);
 
                             }
                             elseif (isset($_SESSION['failed']) && $_SESSION['failed']=true)
                             {
-                                echo $failedMsg;
+                                $_SESSION['msgType'] = "warning";
+                                $_SESSION['msg'] = "Unable to Delete...!";
                                 unset($_SESSION['failed']);
                             }
                         ?>
@@ -161,7 +151,7 @@
 
             $dir = './_uploads/';
 
-            $FType = array("jpg", "jpeg", "gif", "png", "webp");
+            $FType = array("jpg", "jpeg", "gif", "png", "webp", "pdf");
 
             if (file_exists($dir) == false) {
                 echo 'Directory \''. $dir. '\' not found!';
@@ -187,25 +177,4 @@
     </div>
 </section>
 
-
-<script>
-    //Delete Function For Delete Item
-    function del($fileName)
-    {
-        var Confirmation = confirm("Are you sure you want to delete?");
-        if(!Confirmation)
-        {
-            return;
-        }
-        else
-        {
-            window.location = "delete.php?file=" + $fileName;
-        }
-
-    }
-</script>
-
-<script src="./assets/js/jquery-3.6.4.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.js"></script>
-</body>
-</html>
+<?php include './footer.php'; ?>
